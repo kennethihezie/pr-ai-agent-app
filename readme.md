@@ -30,6 +30,14 @@ An intelligent web application that leverages AI to analyze GitHub pull requests
 
 ## ⚙️ Setup Instructions
 
+### AWS setup
+
+1. Create a free tier account on aws.
+
+2. Create an IAM user and attach a custom policy to InvokeModel.
+
+3. Navigate to Aws bedrock and request access to claude 3.5 haiku model
+
 ### Backend Setup
 
 1. Navigate to the backend folder:
@@ -170,6 +178,7 @@ An intelligent web application that leverages AI to analyze GitHub pull requests
 
 - **Rate limits**: GitHub API rate limits can still impact frequent usage
 - **Bedrock dependency**: The LLM integration assumes AWS availability and keys
+- **Parameter configuration**: Though this was designed in the api endpoint but was not implemented in the frontend
 - **Future improvements**: 
   - Support for additional code hosting platforms (GitLab, Bitbucket)
   - Enhanced analysis capabilities (security scanning, performance impact)

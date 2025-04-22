@@ -107,7 +107,7 @@ export default function AuthPage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Input
-                    name="email"
+                    name="username"
                     type="email"
                     placeholder="Email"
                     onChange={handleChange}
@@ -127,11 +127,11 @@ export default function AuthPage() {
                 </div>
                 <div className="space-y-2">
                   <Input
-                    name="github_access_key"
+                    name="githubAccessKey"
                     type="text"
                     placeholder="Github access key"
                     onChange={handleChange}
-                    value={formData.password}
+                    value={formData.githubAccessKey}
                     disabled={isLoading}
                   />
                 </div>
