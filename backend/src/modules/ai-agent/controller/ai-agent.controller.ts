@@ -6,6 +6,7 @@ import { CurrentUser } from 'src/shared/decorators/current_user.decorator';
 import { CurrentUserData } from 'src/shared/types/jwt.type';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AiAgentService } from '../services/ai-agent/ai-agent.service';
+import { Throttle } from '@nestjs/throttler';
 
 @ApiTags('Ai Agent')
 @ApiBearerAuth('JWT')
@@ -14,6 +15,7 @@ import { AiAgentService } from '../services/ai-agent/ai-agent.service';
 export class AiAgentController {
     constructor(private readonly aiAgentService: AiAgentService) {}
 
+    @Throttle({ default: { limit: 1, ttl: 1000 } })
     @ResponseMessage('Pull request analyzed successfully')
     @Post('analyze-pr')
     async getPullRequestDetails(@Body() body: AnalyzePrDto, @Query() query: PrConfigDto, @CurrentUser() user: CurrentUserData) {

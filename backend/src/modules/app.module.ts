@@ -16,6 +16,7 @@ import { HttpClientModule } from './http-client/http-client.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import { redisConfig } from 'src/common/cache/redis';
 import { AppController } from './app.controller';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -25,6 +26,12 @@ import { AppController } from './app.controller';
       useFactory: redisConfig,
       isGlobal: true
     }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000, //60 seconds
+        limit: 50, //100 requests
+      },
+    ]),
     AuthModule,
     AiAgentModule,
     HttpClientModule
