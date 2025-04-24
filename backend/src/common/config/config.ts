@@ -20,7 +20,12 @@ export const config = {
         accessKey: configService.get<string>('AWS_ACCESS_KEY'),
         secretAccessKey: configService.get<string>('AWS_SECRET_KEY'),
         region: configService.get<string>('AWS_REGION'),
-        aiAgent: configService.get<string>('AWS_CLAUDE_AI_ARN')
+        aiAgent: configService.get<string>('AWS_CLAUDE_AI_ARN'),
+        modelVersion: configService.get<string>('AWS_MODEL_VERSION'),
+        modelMaxToken: configService.get<number>('AWS_MODEL_MAX_TOKEN'),
+        topK: configService.get<number>('AWS_TOP_K'),
+        temperature: configService.get<number>('AWS_MODEL_TEMPERATURE'),
+        topP: configService.get<number>('AWS_TOP_P')
     },
     jwt: {
         expiryTime: configService.get<string>('JWT_EXPIRY_TIME'),

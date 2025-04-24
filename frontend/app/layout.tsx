@@ -3,12 +3,13 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Providers } from '../lib/redux/provider';
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'URL Analyzer - Analyze and View Markdown Results',
-  description: 'Analyze URLs and view the results in beautiful markdown formatting',
+  description: 'Analyze PR URLs and view the results in beautiful markdown formatting',
 };
 
 export default function RootLayout({
@@ -26,6 +27,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+          <Toaster richColors position="top-right" />
             {children}
           </ThemeProvider>
         </Providers>

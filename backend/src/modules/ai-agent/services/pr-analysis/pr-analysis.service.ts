@@ -52,28 +52,28 @@ export class PrAnalysisService {
         const analysisSections = this.formatAnalysisSections(activeOptions);
 
         return `
-      You are a senior AI code reviewer. A developer has submitted the following Pull Request:
+               You are a senior AI code reviewer. A developer has submitted the following Pull Request:
       
-      🔹 **Title**: ${prData.title}  
-      🔹 **Author**: ${prData.author}  
-      🔹 **Source Branch**: ${prData.branch}  
-      🔹 **Target Branch**: ${prData.base}  
+               🔹 **Title**: ${prData.title}  
+               🔹 **Author**: ${prData.author}  
+               🔹 **Source Branch**: ${prData.branch}  
+               🔹 **Target Branch**: ${prData.base}  
       
-      📝 **Description**:  
-      ${prData.body}
+               📝 **Description**:  
+               ${prData.body}
       
-      📄 **Files Changed**:  
-      ${fileChanges}
+               📄 **Files Changed**:  
+               ${fileChanges}
       
-      🧾 **Commits**:  
-      ${commitMessages}
+               🧾 **Commits**:  
+               ${commitMessages}
       
-      ---
+               ---
       
-      Please produce a **comprehensive pull request review report** that includes the following sections:
+               Please produce a **comprehensive pull request review report** that includes the following sections:
       
-      ${analysisSections}
-      `;
+               ${analysisSections}
+             `;
     }
 
     private getActiveOptions(options?: AnalysisOptions): AnalysisOptions {

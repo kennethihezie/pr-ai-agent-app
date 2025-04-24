@@ -19,11 +19,11 @@ export class AwsBedrockService {
     async invokeModel(prompt: string): Promise<string> {
         const modelId = config.aws.aiAgent;
         const baseParams = {
-            anthropic_version: "bedrock-2023-05-31",
-            max_tokens: 200,
-            top_k: 250,
-            temperature: 0.7,
-            top_p: 0.95,
+            anthropic_version: config.aws.modelVersion,
+            max_tokens: Number(config.aws.modelMaxToken),
+            top_k: Number(config.aws.topK),
+            temperature: Number(config.aws.temperature),
+            top_p: Number(config.aws.topP),
         };
 
         let messages = this.createMessagePrompt(prompt);
