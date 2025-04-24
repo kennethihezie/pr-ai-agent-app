@@ -9,6 +9,7 @@ import { Toaster } from "sonner";
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
 import { analyzePr } from "@/lib/services/api";
+import { AxiosError } from "axios";
 
 export default function Home() {
   const router = useRouter();
@@ -36,7 +37,7 @@ export default function Home() {
       setTimestamp(new Date().toLocaleString());
     } catch (error) {
       console.error("Error analyzing URL:", error);
-      setResult("# Error\nThere was an error analyzing this URL. Please try again.");
+      setResult(`# Error\n ${error instanceof AxiosError ? error.response?.data.message : "There was an error analyzing this URL. Please try again."}`);
     } finally {
       setIsLoading(false);
     }

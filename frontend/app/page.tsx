@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Loader2, Mail, Lock } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useDispatch } from "react-redux";
 import { login, signup } from "@/lib/services/api";
 import { setToken } from "@/lib/redux/slices/authSlice";
+import { AxiosError } from "axios";
 
 export default function AuthPage() {
   const router = useRouter();
@@ -37,8 +38,8 @@ export default function AuthPage() {
         dispatch(setToken(token));
         router.push("/pr-analysis");
       }
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Something went wrong");
+    } catch (error) {      
+      toast.error(error instanceof AxiosError ? error.response?.data.message : "Something went wrong");
     } finally {
       setIsLoading(false);
     }
@@ -109,7 +110,7 @@ export default function AuthPage() {
                   <Input
                     name="username"
                     type="email"
-                    placeholder="Email"
+                    placeholder="Username"
                     onChange={handleChange}
                     value={formData.username}
                     disabled={isLoading}
@@ -128,7 +129,7 @@ export default function AuthPage() {
                 <div className="space-y-2">
                   <Input
                     name="githubAccessKey"
-                    type="text"
+                    type="password"
                     placeholder="Github access key"
                     onChange={handleChange}
                     value={formData.githubAccessKey}
